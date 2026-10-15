@@ -7,9 +7,9 @@ A Next.js site built from the Figma home page (frame "MacBook Pro 14" - 4").
 | To change | Edit |
 | --- | --- |
 | Colors, label size | `app/globals.css` (the variables at the top) |
-| Collage layout | `app/page.module.css` (the `grid-template-areas` block) |
+| Collage layout | `components/Collage.module.css` (the `grid-template-areas` block) |
 | Which image goes where, alt text, links | `content/tiles.ts` |
-| Name, about link, category links | `app/page.tsx` |
+| Name, statement, about link, category links | `components/Collage.tsx` |
 | Fonts | `app/layout.tsx` |
 
 ## Adding images

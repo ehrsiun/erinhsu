@@ -38,6 +38,38 @@
   width: 78%;
 }
 
+/* Name and statement share one cell so swapping them doesn't shift layout. */
+.nameSwap {
+  display: grid;
+  align-items: center;
+  outline: none;
+}
+
+.nameSwap > * {
+  grid-area: 1 / 1;
+  transition: opacity var(--hover-speed) ease;
+}
+
+.statement {
+  margin: 0;
+  max-width: 88%;
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 40px);
+  line-height: 1.25;
+  opacity: 0;
+}
+
+.nameSwap:hover .name,
+.nameSwap:focus-visible .name {
+  opacity: 0;
+}
+
+.nameSwap:hover .statement,
+.nameSwap:focus-visible .statement {
+  opacity: 1;
+}
+
 .name {
   margin: 0;
   font-family: var(--font-display), serif;
@@ -55,9 +87,17 @@
   font-size: var(--label-size);
 }
 
-.about:hover,
-.categories a:hover {
+.about:hover {
   text-decoration: underline;
+}
+
+/* The hovered category stays dark while the others fade. */
+.categories a {
+  transition: opacity var(--hover-speed) ease;
+}
+
+.categories:has(.activeCategory) a:not(.activeCategory) {
+  opacity: 0.35;
 }
 
 /* Phones and narrow windows: name first, then the images two across. */

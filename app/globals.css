@@ -1,0 +1,26 @@
+/* Design tokens: change these to restyle the whole site. */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --muted: #555555;
+  --line: #000000;
+  --placeholder: #d9d9d9;
+  --label-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

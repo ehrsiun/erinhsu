@@ -1,0 +1,28 @@
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.fill {
+  height: 100%;
+}
+
+.cell {
+  position: relative;
+  flex-basis: 0;
+  min-width: 0;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Logos sit whole on white with breathing room. */
+.contain {
+  background: var(--bg);
+}
+
+.contain .image {
+  object-fit: contain;
+  padding: 18% 22%;
+}

@@ -1,0 +1,153 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 96px;
+}
+
+.role {
+  color: var(--accent);
+}
+
+.work {
+  padding: 0 var(--page-side);
+  margin-top: 72px;
+}
+
+/* Thumbnails and layout animate into place, one after another. */
+.project {
+  animation: rise 0.6s ease both;
+  animation-delay: calc(0.15s + var(--i) * 0.08s);
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: opacity var(--hover-speed) ease;
+}
+
+.card:hover {
+  opacity: 0.85;
+}
+
+/* Visual: artworks in a row at their own proportions. */
+.visual {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4vw;
+  align-items: start;
+}
+
+/* Product: large rounded cards, two across, caption under the image. */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px 4.5vw;
+}
+
+.product .project {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.product .title {
+  margin: 14px 0 0;
+}
+
+.product .card {
+  aspect-ratio: 618 / 347;
+  border-radius: 20px;
+  position: relative;
+}
+
+/* A hairline edge so white-background thumbnails still read as cards. */
+.product .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  pointer-events: none;
+}
+
+
+/* Brand: each project is a strip of images; extra ones slide out. */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.strip {
+  display: flex;
+  height: clamp(180px, 19vw, 300px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.stripItem {
+  position: relative;
+  flex: none;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.stripItem img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+button.stripItem {
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Thumb inside a strip is as tall as the strip; width follows the images. */
+.stripItem > div {
+  height: 100%;
+  width: auto;
+}
+
+.stripItem > div > div {
+  height: 100%;
+  flex: none !important;
+  width: auto;
+}
+
+.slideOut {
+  animation: slideOut 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(0.5s + var(--j) * 0.12s);
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .work {
+    margin-top: 48px;
+  }
+
+  .visual,
+  .product {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

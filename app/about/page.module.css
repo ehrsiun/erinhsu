@@ -1,0 +1,7 @@
+.body {
+  padding: 72px var(--page-side);
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}

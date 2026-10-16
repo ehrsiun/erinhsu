@@ -1,12 +1,5 @@
-import fs from "node:fs";
-import path from "node:path";
-import Collage from "@/components/Collage";
-import { tiles } from "@/content/tiles";
+import Home from "@/components/Home";
 
-function imageExists(file: string) {
-  return fs.existsSync(path.join(process.cwd(), "public", "images", file));
-}
-
-export default function Home() {
-  return <Collage tiles={tiles.map((tile) => ({ ...tile, hasImage: imageExists(tile.image) }))} />;
+export default function Page() {
+  return <Home />;
 }

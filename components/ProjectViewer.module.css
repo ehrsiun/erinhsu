@@ -1,0 +1,79 @@
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--backdrop);
+  opacity: 0;
+  transition: opacity var(--move-speed) ease;
+}
+
+.frame {
+  position: fixed;
+  overflow: hidden;
+  background: var(--bg);
+  transition-property: top, left, width, height;
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.title,
+.close {
+  position: fixed;
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  opacity: 0;
+  transition: opacity var(--move-speed) ease;
+}
+
+.close {
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: 0;
+  padding: 8px;
+  font-family: inherit;
+  font-size: var(--label-size);
+  cursor: pointer;
+}
+
+.shown {
+  opacity: 1;
+}
+
+.scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+.scrollable {
+  overflow-y: auto;
+}
+
+.body {
+  opacity: 0;
+  transition: opacity var(--move-speed) ease 0.2s;
+}
+
+.body.shown {
+  opacity: 1;
+}
+
+.galleryImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.paragraph {
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}

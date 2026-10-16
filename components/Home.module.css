@@ -1,0 +1,188 @@
+/*
+ * The home collage follows the Figma frame "standard home screen" (1512 x 982).
+ * Column and row sizes are the Figma pixel sizes used as fractions, so the
+ * layout scales with the window and keeps its proportions.
+ */
+.collage {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  grid-template-columns: 256fr 191fr 291fr 494fr 24fr 256fr;
+  grid-template-rows: 254fr 110fr 34fr 330fr 54fr 200fr;
+  grid-template-areas:
+    "portrait thai thai segd dance dance"
+    "portrait hero hero hero hero gotgt"
+    "calendar hero hero hero hero gotgt"
+    "calendar hero hero hero hero landscape"
+    "fish     fish food food food landscape"
+    "fish     fish food food food cvs";
+}
+
+.tile {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: var(--placeholder);
+  cursor: pointer;
+  transition:
+    transform var(--move-speed) ease,
+    box-shadow var(--move-speed) ease;
+}
+
+/* Thumbnail hover: darken and show the project's one-liner. */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+  opacity: 0;
+  transition: opacity var(--hover-speed) ease;
+}
+
+.tileTitle {
+  position: absolute;
+  z-index: 1;
+  top: 18%;
+  left: 6%;
+  right: 6%;
+  color: #fff;
+  font-size: clamp(16px, 2.1vw, 32px);
+  line-height: 1.2;
+  text-align: left;
+  opacity: 0;
+  transition: opacity var(--hover-speed) ease;
+}
+
+.tile:hover::after,
+.tile:focus-visible::after,
+.tile:hover .tileTitle,
+.tile:focus-visible .tileTitle {
+  opacity: 1;
+}
+
+/* Category hover: that category's thumbnails lift and glow in its accent. */
+.highlighted {
+  z-index: 2;
+  transform: scale(1.08);
+  box-shadow: 0 0 28px 8px var(--accent);
+}
+
+.hero {
+  grid-area: hero;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+}
+
+.about {
+  position: absolute;
+  top: 11%;
+  right: 7%;
+  font-size: var(--label-size);
+}
+
+.nameBlock {
+  width: 78%;
+}
+
+.nameSwap {
+  display: grid;
+  align-items: center;
+  outline: none;
+}
+
+.nameSwap > * {
+  grid-area: 1 / 1;
+  transition: opacity var(--hover-speed) ease;
+}
+
+.name {
+  margin: 0;
+  line-height: 0;
+}
+
+.wordmark {
+  width: 100%;
+  height: auto;
+}
+
+.statement {
+  margin: 0;
+  max-width: 88%;
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 40px);
+  line-height: 1.25;
+  opacity: 0;
+}
+
+.nameSwap:hover .name,
+.nameSwap:focus-visible .name {
+  opacity: 0;
+}
+
+.nameSwap:hover .statement,
+.nameSwap:focus-visible .statement {
+  opacity: 1;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6%;
+  font-size: var(--label-size);
+}
+
+.categories a {
+  transition: color var(--hover-speed) ease;
+}
+
+.activeCategory {
+  color: var(--accent);
+}
+
+.about:hover {
+  text-decoration: underline;
+}
+
+/* Tablets and phones: name on top, then the thumbnails two across. */
+@media (max-width: 800px) {
+  .collage {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto repeat(6, 44vw);
+    grid-template-areas:
+      "hero      hero"
+      "portrait  thai"
+      "segd      segd"
+      "food      food"
+      "fish      gotgt"
+      "calendar  dance"
+      "cvs       landscape";
+  }
+
+  .hero {
+    padding: 64px 16px 40px;
+  }
+
+  .about {
+    top: 20px;
+    right: 16px;
+  }
+
+  .nameBlock {
+    width: 100%;
+  }
+
+  .highlighted {
+    transform: none;
+  }
+}

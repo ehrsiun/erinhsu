@@ -1,13 +1,17 @@
-/* Design tokens: change these to restyle the whole site. */
+/* Design tokens: change these to restyle the whole site.
+   Category accent colours live in content/projects.ts. */
 :root {
   --bg: #ffffff;
   --text: #000000;
-  --muted: #555555;
+  --muted: rgba(0, 0, 0, 0.64);
   --line: #000000;
   --placeholder: #d9d9d9;
   --label-size: 16px;
   --overlay: rgba(0, 0, 0, 0.4);
+  --backdrop: rgba(0, 0, 0, 0.6);
   --hover-speed: 0.25s;
+  --move-speed: 0.4s;
+  --page-side: clamp(16px, 7.3vw, 120px);
 }
 
 * {
@@ -25,4 +29,25 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

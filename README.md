@@ -1,22 +1,31 @@
 # Erin Hsu portfolio
 
-A Next.js site built from the Figma home page (frame "MacBook Pro 14" - 4").
+A Next.js site built from the Figma page "final structure".
+
+## Pages
+
+- `/`: home collage. Hovering the name shows the statement, hovering a category
+  makes its tiles glow in that category's colour, and clicking a tile opens the project.
+- `/product`, `/brand` and `/visual`: one page for each category.
+- `/about`: a placeholder for now.
 
 ## Where things live
 
 | To change | Edit |
 | --- | --- |
-| Colors, label size | `app/globals.css` (the variables at the top) |
-| Collage layout | `components/Collage.module.css` (the `grid-template-areas` block) |
-| Which image goes where, alt text, links | `content/tiles.ts` |
-| Name, statement, about link, category links | `components/Collage.tsx` |
+| Projects: titles, categories, images, write-ups | `content/projects.ts` |
+| Category colours and statements | `content/projects.ts` (`categoryInfo`) |
+| Colors, sizes, animation speed | `app/globals.css` (the variables at the top) |
+| Home collage layout | `components/Home.module.css` (the `grid-template-areas` blocks) |
+| Category page layouts | `components/CategoryPage.module.css` |
+| How a project opens | `components/ProjectViewer.tsx` |
+| The "Erin Hsu" lettering | `components/Wordmark.tsx` |
 | Fonts | `app/layout.tsx` |
 
 ## Adding images
 
-Put each file in `public/images/` using the name listed in `content/tiles.ts`
-(for example `public/images/gotgt.png`). Any image that is missing shows as a
-gray box with its expected file name, so you can see what is left.
+Put each file in `public/images/`, then point to it in `content/projects.ts`
+with its real pixel width and height.
 
 ## Putting it online (GitHub + Vercel)
 

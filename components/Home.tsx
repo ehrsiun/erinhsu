@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import TransitionLink from "@/components/PageTransition";
+import { transitionName } from "@/lib/transitionName";
 import Thumb from "@/components/Thumb";
 import Wordmark from "@/components/Wordmark";
 import { useOpenProject } from "@/components/ProjectViewer";
@@ -22,7 +23,7 @@ export default function Home() {
         <button
           key={project.slug}
           className={`${styles.tile} ${active === project.category ? styles.highlighted : ""}`}
-          style={{ gridArea: project.area }}
+          style={{ gridArea: project.area, ...transitionName(`thumb-${project.slug}`) }}
           onClick={(e) => openProject(project, e.currentTarget)}
           aria-label={project.title}
         >
@@ -32,13 +33,13 @@ export default function Home() {
       ))}
 
       <section className={styles.hero}>
-        <Link href="/about" className={styles.about}>
+        <TransitionLink href="/about" className={styles.about} style={transitionName("about")}>
           about
-        </Link>
+        </TransitionLink>
         <div className={styles.nameBlock}>
           {/* Hovering the name swaps it for the one-line statement. */}
           <div className={styles.nameSwap} tabIndex={0}>
-            <h1 className={styles.name}>
+            <h1 className={styles.name} style={transitionName("wordmark")}>
               <Wordmark className={styles.wordmark} />
             </h1>
             <p className={styles.statement}>
@@ -47,7 +48,7 @@ export default function Home() {
           </div>
           <nav className={styles.categories} aria-label="Work categories">
             {categories.map((category) => (
-              <Link
+              <TransitionLink
                 key={category}
                 href={`/${category}`}
                 className={active === category ? styles.activeCategory : undefined}
@@ -55,9 +56,11 @@ export default function Home() {
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(category)}
                 onBlur={() => setActive(null)}
+                // The chosen category glides into the sentence on its page.
+                onClick={(e) => (e.currentTarget.style.viewTransitionName = "role")}
               >
                 {category}
-              </Link>
+              </TransitionLink>
             ))}
           </nav>
         </div>

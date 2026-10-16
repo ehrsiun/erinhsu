@@ -12,6 +12,12 @@
   --hover-speed: 0.25s;
   --move-speed: 0.4s;
   --page-side: clamp(16px, 7.3vw, 120px);
+  --title-size: 20px;
+  /* erin's fonts come first. They show once the Adobe Fonts kit in
+     app/layout.tsx is set (or on a computer that has them installed);
+     until then the free stand-ins after them are used. */
+  --sans: "ardoise-std", "Ardoise Std", var(--font-sans), sans-serif;
+  --italic: "mencken-std", "Mencken Std", var(--font-display), serif;
 }
 
 * {
@@ -23,7 +29,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--sans);
 }
 
 a {
@@ -41,6 +47,25 @@ button {
     opacity: 0;
     transform: translateY(24px);
   }
+}
+
+/* Moving between home and a category page (components/PageTransition.tsx):
+   shared pieces glide to their new place while the rest crossfades. */
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+}
+
+/* Thumbnails change shape on the way; crop rather than stretch. */
+::view-transition-old(*),
+::view-transition-new(*) {
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (prefers-reduced-motion: reduce) {

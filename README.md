@@ -20,7 +20,8 @@ A Next.js site built from the Figma page "final structure".
 | Category page layouts | `components/CategoryPage.module.css` |
 | How a project opens | `components/ProjectViewer.tsx` |
 | The "Erin Hsu" lettering | `components/Wordmark.tsx` |
-| Fonts | `app/layout.tsx` |
+| Fonts | `app/layout.tsx` (Adobe Fonts kit ID) and `app/globals.css` (`--sans`, `--italic`) |
+| Animation between home and category pages | `components/PageTransition.tsx`, timing in `app/globals.css` |
 
 ## Adding images
 

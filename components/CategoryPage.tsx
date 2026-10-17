@@ -24,12 +24,12 @@ export default function CategoryPage({ category }: { category: Category }) {
   const open = (project: Project) => (e: React.MouseEvent<HTMLElement>) => openProject(project, e.currentTarget);
 
   return (
-    <main className={styles.page} style={{ "--accent": info.accent } as React.CSSProperties}>
+    <main
+      className={styles.page}
+      style={{ "--accent": info.accent, "--after-move": rise ? "0s" : "0.8s" } as React.CSSProperties}
+    >
       <PageIntro>
-        is a{" "}
-        <span className={styles.role} style={transitionName("role")}>
-          {info.role}
-        </span> {info.statement}
+        is a <span className={styles.role}>{info.role}</span> {info.statement}
       </PageIntro>
 
       <div className={`${styles.work} ${styles[category]}`}>
@@ -55,7 +55,7 @@ export default function CategoryPage({ category }: { category: Category }) {
               </div>
             ) : (
               <button
-                className={styles.card}
+                className={`${styles.card} ${project.fit === "contain" ? styles.outlined : ""}`}
                 style={transitionName(`thumb-${project.slug}`)}
                 onClick={open(project)}
                 aria-label={`Open ${project.title}`}

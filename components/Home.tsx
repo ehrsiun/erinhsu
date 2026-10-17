@@ -56,8 +56,6 @@ export default function Home() {
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(category)}
                 onBlur={() => setActive(null)}
-                // The chosen category glides into the sentence on its page.
-                onClick={(e) => (e.currentTarget.style.viewTransitionName = "role")}
               >
                 {category}
               </TransitionLink>

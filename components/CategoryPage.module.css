@@ -4,8 +4,6 @@
 }
 
 .role {
-  /* One unbroken box, so it can glide in from the home page's category link. */
-  display: inline-block;
   color: var(--accent);
 }
 
@@ -73,8 +71,8 @@
   position: relative;
 }
 
-/* A hairline edge so white-background thumbnails still read as cards. */
-.product .card::after {
+/* A hairline edge so white-background thumbnails (CVS) still read as cards. */
+.product .outlined::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -132,7 +130,7 @@ button.stripItem {
 
 .slideOut {
   animation: slideOut 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  animation-delay: calc(0.5s + var(--j) * 0.12s);
+  animation-delay: calc(var(--after-move, 0s) + 0.5s + var(--j) * 0.12s);
 }
 
 @keyframes slideOut {

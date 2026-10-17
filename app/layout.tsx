@@ -16,7 +16,7 @@ const display = Instrument_Serif({
 
 // erin's Adobe Fonts web project (Mencken Std and Ardoise Std). Paste the
 // project ID from fonts.adobe.com > Web Projects here, e.g. "abc1def".
-const ADOBE_FONTS_KIT = "";
+const ADOBE_FONTS_KIT = "pas1cwi";
 
 export const metadata: Metadata = {
   title: "Erin Hsu",

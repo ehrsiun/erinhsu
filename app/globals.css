@@ -16,8 +16,8 @@
   /* erin's fonts come first. They show once the Adobe Fonts kit in
      app/layout.tsx is set (or on a computer that has them installed);
      until then the free stand-ins after them are used. */
-  --sans: "ardoise-std", "Ardoise Std", var(--font-sans), sans-serif;
-  --italic: "mencken-std", "Mencken Std", var(--font-display), serif;
+  --sans: "ardoise-std", "ardoise", "Ardoise Std", var(--font-sans), sans-serif;
+  --italic: "mencken-std", "mencken-std-text", "mencken", "Mencken Std", var(--font-display), serif;
 }
 
 * {

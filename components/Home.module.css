@@ -4,7 +4,6 @@
  * layout scales with the window and keeps its proportions.
  */
 .collage {
-  position: relative;
   display: grid;
   width: 100%;
   height: 100vh;
@@ -64,23 +63,7 @@
   opacity: 1;
 }
 
-/* Category hover: a light wash of the category's colour covers the whole
-   screen, and that category's thumbnails lift above it, untinted. */
-.collage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: var(--tint);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--move-speed) ease;
-}
-
-.washed::after {
-  opacity: var(--wash-opacity);
-}
-
+/* Category hover: that category's thumbnails lift above the rest. */
 .highlighted {
   z-index: 2;
   transform: scale(1.08);

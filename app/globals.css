@@ -13,6 +13,8 @@
   --move-speed: 0.4s;
   --page-side: clamp(16px, 7.3vw, 120px);
   --title-size: 20px;
+  --title-inset: 24px;
+  --wash-opacity: 0.25;
   /* erin's fonts come first. They show once the Adobe Fonts kit in
      app/layout.tsx is set (or on a computer that has them installed);
      until then the free stand-ins after them are used. */

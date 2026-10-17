@@ -13,11 +13,19 @@ export default function Home() {
   const openProject = useOpenProject();
   // The category whose link is hovered; its thumbnails lift and glow.
   const [active, setActive] = useState<Category | null>(null);
+  // The wash keeps its colour while it fades out after the hover ends.
+  const [tint, setTint] = useState<Category>("product");
+  if (active && active !== tint) setTint(active);
 
   return (
     <main
-      className={styles.collage}
-      style={active ? ({ "--accent": categoryInfo[active].accent } as React.CSSProperties) : undefined}
+      className={`${styles.collage} ${active ? styles.washed : ""}`}
+      style={
+        {
+          "--tint": categoryInfo[tint].accent,
+          ...(active && { "--accent": categoryInfo[active].accent }),
+        } as React.CSSProperties
+      }
     >
       {projects.map((project) => (
         <button

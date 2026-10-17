@@ -4,6 +4,7 @@
  * layout scales with the window and keeps its proportions.
  */
 .collage {
+  position: relative;
   display: grid;
   width: 100%;
   height: 100vh;
@@ -28,9 +29,7 @@
   border: 0;
   background: var(--placeholder);
   cursor: pointer;
-  transition:
-    transform var(--move-speed) ease,
-    box-shadow var(--move-speed) ease;
+  transition: transform var(--move-speed) ease;
 }
 
 /* Thumbnail hover: darken and show the project's one-liner. */
@@ -46,9 +45,10 @@
 .tileTitle {
   position: absolute;
   z-index: 1;
-  top: 18%;
-  left: 6%;
-  right: 6%;
+  /* Same distance from the top-left corner on every tile. */
+  top: var(--title-inset);
+  left: var(--title-inset);
+  right: var(--title-inset);
   color: #fff;
   font-size: var(--title-size);
   line-height: 1.3;
@@ -64,11 +64,26 @@
   opacity: 1;
 }
 
-/* Category hover: that category's thumbnails lift and glow in its accent. */
+/* Category hover: a light wash of the category's colour covers the whole
+   screen, and that category's thumbnails lift above it, untinted. */
+.collage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--tint);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--move-speed) ease;
+}
+
+.washed::after {
+  opacity: var(--wash-opacity);
+}
+
 .highlighted {
   z-index: 2;
   transform: scale(1.08);
-  box-shadow: 0 0 28px 8px var(--accent);
 }
 
 .hero {
